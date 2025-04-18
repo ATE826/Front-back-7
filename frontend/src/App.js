@@ -5,11 +5,21 @@ import './App.css';
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
+  const [isOffline, setIsOffline] = useState(!navigator.onLine); // Проверяем статус подключения
 
   // Загрузка заметок из localStorage при инициализации компонента
   useEffect(() => {
     const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
     setNotes(storedNotes);
+
+    // Проверка на подключение
+    window.addEventListener('online', () => setIsOffline(false));
+    window.addEventListener('offline', () => setIsOffline(true));
+
+    return () => {
+      window.removeEventListener('online', () => setIsOffline(false));
+      window.removeEventListener('offline', () => setIsOffline(true));
+    };
   }, []);
 
   // Функция для сохранения заметок в localStorage
@@ -22,9 +32,15 @@ const App = () => {
   const addNote = () => {
     if (newNote.trim()) {
       const updatedNotes = [...notes, newNote];
-      saveNotes(updatedNotes);  // Сохраняем обновленные заметки
-      setNewNote('');  // Очищаем поле ввода
+      saveNotes(updatedNotes); // Сохраняем обновленные заметки
+      setNewNote(''); // Очищаем поле ввода
     }
+  };
+
+  // Удаление заметки
+  const deleteNote = (index) => {
+    const updatedNotes = notes.filter((_, i) => i !== index);
+    saveNotes(updatedNotes);
   };
 
   return (
@@ -41,7 +57,10 @@ const App = () => {
         />
         <button onClick={addNote} className="add-note-btn">Добавить</button>
       </section>
-      <NoteList notes={notes} />
+
+      {isOffline && <p className="offline-warning">Офлайн-режим</p>}
+      
+      <NoteList notes={notes} onDelete={deleteNote} />
     </div>
   );
 };

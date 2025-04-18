@@ -1,132 +1,71 @@
-/* Основные стили для приложения */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f6f9;
-  color: #333;
-  padding: 0;
-  margin: 0;
-}
-
 .app-container {
+  font-family: Arial, sans-serif;
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-header {
-  text-align: center;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
 .app-title {
+  text-align: center;
   font-size: 2rem;
-  color: #4CAF50;
-  margin: 0;
 }
 
-/* Стили для секции заметки */
 .note-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
+  align-items: center;
 }
 
 .note-input {
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
   border: 1px solid #ddd;
-  resize: none;
-  outline: none;
-}
-
-.note-input:focus {
-  border-color: #4CAF50;
+  font-size: 1rem;
 }
 
 .add-note-btn {
-  padding: 12px;
-  font-size: 1rem;
+  padding: 10px 20px;
   background-color: #4CAF50;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .add-note-btn:hover {
   background-color: #45a049;
 }
 
-/* Стили для списка заметок */
-.notes-list {
-  margin-top: 30px;
-}
-
-.notes-title {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
+.note-list {
+  margin-top: 20px;
 }
 
 .note-item {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-}
-
-.note-item:hover {
   background-color: #f9f9f9;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .delete-btn {
   background-color: #f44336;
   color: white;
   border: none;
-  padding: 8px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 5px 10px;
 }
 
 .delete-btn:hover {
   background-color: #e53935;
 }
 
-/* Адаптивность */
-@media (max-width: 600px) {
-  .app-container {
-    padding: 15px;
-  }
-
-  .app-title {
-    font-size: 1.5rem;
-  }
-
-  .note-input {
-    font-size: 1rem;
-  }
-
-  .add-note-btn {
-    font-size: 1rem;
-  }
-
-  .note-item {
-    font-size: 0.9rem;
-  }
+.offline-warning {
+  color: red;
+  text-align: center;
+  font-weight: bold;
 }

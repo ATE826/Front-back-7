@@ -1,10 +1,14 @@
 import React from 'react';
 
-const Note = ({ note }) => {
+const Note = ({ note, onDelete, index }) => {
+  const handleDelete = () => {
+    onDelete(index); // Вызываем функцию удаления при клике
+  };
+
   return (
-    <div>
+    <div className="note-item">
       <p>{note}</p>
-      <button>Удалить</button>
+      <button className="delete-btn" onClick={handleDelete}>Удалить</button>
     </div>
   );
 };

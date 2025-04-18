@@ -6,7 +6,6 @@ import (
 	"net/http"
 )
 
-// Массив заметок
 var notes = []string{}
 
 // Хендлер для получения заметок
@@ -20,21 +19,32 @@ func getNotes(w http.ResponseWriter, r *http.Request) {
 // Хендлер для добавления новой заметки
 func addNote(w http.ResponseWriter, r *http.Request) {
 	var note string
-	// Чтение тела запроса и декодирование
 	if err := json.NewDecoder(r.Body).Decode(&note); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	notes = append(notes, note)       // Добавляем заметку в список
-	w.WriteHeader(http.StatusCreated) // Возвращаем статус 201
+	notes = append(notes, note)
+	w.WriteHeader(http.StatusCreated)
+}
+
+// Хендлер для удаления заметки
+func deleteNote(w http.ResponseWriter, r *http.Request) {
+	var index int
+	if err := json.NewDecoder(r.Body).Decode(&index); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if index >= 0 && index < len(notes) {
+		notes = append(notes[:index], notes[index+1:]...)
+	}
+	w.WriteHeader(http.StatusOK)
 }
 
 func main() {
-	// Маршруты
-	http.HandleFunc("/notes", getNotes)    // Получить заметки
-	http.HandleFunc("/notes/add", addNote) // Добавить заметку
+	http.HandleFunc("/notes", getNotes)          // Получить заметки
+	http.HandleFunc("/notes/add", addNote)       // Добавить заметку
+	http.HandleFunc("/notes/delete", deleteNote) // Удалить заметку
 
-	// Запуск сервера
 	port := ":8080"
 	fmt.Printf("Server is running at %s\n", port)
 	if err := http.ListenAndServe(port, nil); err != nil {

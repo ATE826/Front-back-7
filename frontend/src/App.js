@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NoteList from './components/NoteList';
+import './App.css';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -27,14 +28,19 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Заметки</h1>
-      <textarea
-        value={newNote}
-        onChange={(e) => setNewNote(e.target.value)}
-        placeholder="Напишите заметку..."
-      />
-      <button onClick={addNote}>Добавить</button>
+    <div className="app-container">
+      <header>
+        <h1 className="app-title">Заметки</h1>
+      </header>
+      <section className="note-section">
+        <textarea
+          value={newNote}
+          onChange={(e) => setNewNote(e.target.value)}
+          placeholder="Напишите заметку..."
+          className="note-input"
+        />
+        <button onClick={addNote} className="add-note-btn">Добавить</button>
+      </section>
       <NoteList notes={notes} />
     </div>
   );

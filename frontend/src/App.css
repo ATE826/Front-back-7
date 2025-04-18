@@ -1,62 +1,132 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Основные стили для приложения */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
   color: #333;
-  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
-textarea {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+header {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-button:hover {
+.app-title {
+  font-size: 2rem;
+  color: #4CAF50;
+  margin: 0;
+}
+
+/* Стили для секции заметки */
+.note-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.note-input {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  resize: none;
+  outline: none;
+}
+
+.note-input:focus {
+  border-color: #4CAF50;
+}
+
+.add-note-btn {
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-note-btn:hover {
   background-color: #45a049;
 }
 
+/* Стили для списка заметок */
+.notes-list {
+  margin-top: 30px;
+}
+
+.notes-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
-li {
+.note-item {
   background-color: #fff;
-  margin-bottom: 10px;
-  padding: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1rem;
 }
 
-li:hover {
-  background-color: #f0f0f0;
+.note-item:hover {
+  background-color: #f9f9f9;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 15px;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  .note-input {
+    font-size: 1rem;
+  }
+
+  .add-note-btn {
+    font-size: 1rem;
+  }
+
+  .note-item {
+    font-size: 0.9rem;
+  }
 }
